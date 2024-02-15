@@ -3,7 +3,8 @@
     <section class="todoapp">
       <header class="header">
         <h1>todos</h1>
-        <input class="new-todo" autofocus="" autocomplete="off" placeholder="What needs to be done?" />
+        <input v-model="newItemRef" class="new-todo" @keyup.enter="onAddNewItem" autocomplete="off"
+          placeholder="What needs to be done?" />
       </header>
       <section class="main">
         <input id="toggle-all" class="toggle-all" type="checkbox" />
@@ -54,7 +55,12 @@
 </template>
 
 <script setup>
+import useAddTodoList from './composition/useAddTodoList';
+import useTodoList from './composition/useTodoList';
 
+const { todoListRef } = useTodoList()
+const {
+  newItemRef,
+  onAddNewItem
+} = useAddTodoList(todoListRef)
 </script>
-
-<style lang="scss" scoped></style>
