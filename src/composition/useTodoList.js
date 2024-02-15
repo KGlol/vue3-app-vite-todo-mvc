@@ -9,7 +9,6 @@ export default function useTodoList() {
   // 监听todoListRef变化，vue自定监听watchEffect中的响应式数据变化
   watchEffect(() => {
     storage.save(todoListRef.value)
-    console.log('todoListRef :>> ', todoListRef.value);
   })
   return {
     todoListRef
